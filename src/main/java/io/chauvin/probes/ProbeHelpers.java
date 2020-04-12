@@ -172,8 +172,6 @@ public class ProbeHelpers {
   }
 
   public ProbeFuture parallel(Runnable... runnables) {
-    // .reduce(CompletableFuture.completedFuture(null),
-    //    (acc, f) -> CompletableFuture.allOf(acc, f));
     CompletableFuture<Void> future =
         CompletableFuture.allOf(
             Stream.of(runnables)
