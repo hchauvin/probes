@@ -12,12 +12,12 @@ public class PrintStreamProbeResultListenerTest {
         PrintStreamProbeResultListener.getUTF8Stdout());
 
     listener.onProbeResult(
-        new ProbeResult("OK probe", "message", ProbeResult.ProbeStatus.OK, 0));
+        new ProbeResult("OK probe", "message", ProbeResult.Status.OK, 0));
     listener.onProbeResult(
-        new ProbeResult("RETRY probe", "message", ProbeResult.ProbeStatus.RETRY, 1));
+        new ProbeResult("RETRY probe", "message", ProbeResult.Status.RETRY, 1));
     listener.onProbeResult(
-        new ProbeResult("ERROR probe", "message", ProbeResult.ProbeStatus.ERROR, 2));
+        new ProbeResult("ERROR probe", "message", ProbeResult.Status.ERROR, 2));
     listener.onProbeResult(
-        new ProbeResult("FATAL probe", "message", ProbeResult.ProbeStatus.FATAL, 3));
+        new ProbeResult("FATAL probe", "message", ProbeResult.Status.FATAL, 3));
   }
 }

@@ -6,6 +6,9 @@ package io.chauvin.probes;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A probe result listener that counts the probes.
+ */
 public class CountingProbeResultListener implements ProbeResultListener {
   private Set<String> names = new HashSet<>();
   private int successCount = 0;
@@ -17,7 +20,7 @@ public class CountingProbeResultListener implements ProbeResultListener {
       ++probeCount;
       names.add(result.getName());
     }
-    if (result.getStatus() == ProbeResult.ProbeStatus.OK) {
+    if (result.getStatus() == ProbeResult.Status.OK) {
       ++successCount;
     }
   }
