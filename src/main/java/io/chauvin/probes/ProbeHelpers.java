@@ -77,6 +77,14 @@ public class ProbeHelpers {
     sectionHierarchy.get().pop();
   }
 
+  public void start(String message) {
+    onProbeResult(new ProbeResult(name(), message, ProbeResult.ProbeStatus.STARTED, 0));
+  }
+
+  public void start() {
+    start(null);
+  }
+
   public void retry(String name, int maxRetries, Duration backoff, Retriable retriable) {
     section(
         name,

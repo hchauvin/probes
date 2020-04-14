@@ -35,6 +35,7 @@ public class ProbeResult {
   }
 
   public enum ProbeStatus {
+    STARTED,
     OK,
     RETRY,
     ERROR,
