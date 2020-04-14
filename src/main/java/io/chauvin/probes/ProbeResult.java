@@ -24,10 +24,7 @@ public class ProbeResult {
     return name;
   }
 
-  /**
-   * An optional message associated with the probing, for instance, the description
-   * of an error.
-   */
+  /** An optional message associated with the probing, for instance, the description of an error. */
   public @Nullable String getMessage() {
     return message;
   }
@@ -47,10 +44,9 @@ public class ProbeResult {
     /**
      * The probe just started.
      *
-     * It is not required to report that a probe is starting.  Reporting this
-     * might however be useful if the probe takes some time to execute.  This
-     * gives an opportunity to the {@link ProbeResultListener} to give feedback
-     * to the user.
+     * <p>It is not required to report that a probe is starting. Reporting this might however be
+     * useful if the probe takes some time to execute. This gives an opportunity to the {@link
+     * ProbeResultListener} to give feedback to the user.
      */
     STARTED,
 
@@ -58,20 +54,19 @@ public class ProbeResult {
     OK,
 
     /**
-     * The probe failed, but the error is assumed to be transient, and the
-     * probe will be retried.
+     * The probe failed, but the error is assumed to be transient, and the probe will be retried.
      */
     RETRY,
 
     /**
-     * The probe errored.  The error is non-fatal, the other probes will
-     * continue executing, and new probes can be scheduled.
+     * The probe errored. The error is non-fatal, the other probes will continue executing, and new
+     * probes can be scheduled.
      */
     ERROR,
 
     /**
-     * The probe errored, and the error is fatal.  The other probes will
-     * be cancelled, and no new probe will be scheduled.
+     * The probe errored, and the error is fatal. The other probes will be cancelled, and no new
+     * probe will be scheduled.
      */
     FATAL
   }

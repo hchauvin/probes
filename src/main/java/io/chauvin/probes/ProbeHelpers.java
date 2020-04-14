@@ -14,16 +14,15 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 /**
  * Various helpers for reporting probe results.
  *
- * In the {@code ProbeHelpers} methods, the probe names are derived
- * from a thread-local context.  Probe "sections" can be nested and
- * this gives a hierarchy from which a full probe name is derived.
+ * <p>In the {@code ProbeHelpers} methods, the probe names are derived from a thread-local context.
+ * Probe "sections" can be nested and this gives a hierarchy from which a full probe name is
+ * derived.
  */
 public class ProbeHelpers {
   private ProbeResultListener listener;
@@ -103,19 +102,17 @@ public class ProbeHelpers {
     listener.onProbeResult(result);
   }
 
-  /**
-   * Reports a probe that succeeded with no retry.
-   */
+  /** Reports a probe that succeeded with no retry. */
   public void onSuccess() {
     onSuccess(0);
   }
 
   /**
-   * Adds a level to the thread-local probe section hierarchy and
-   * executes a runnable at this new level.
+   * Adds a level to the thread-local probe section hierarchy and executes a runnable at this new
+   * level.
    *
-   * All the probe results reported in {@code runnable} will be
-   * reported in a (nested) section named {@code name}.
+   * <p>All the probe results reported in {@code runnable} will be reported in a (nested) section
+   * named {@code name}.
    *
    * @param name The name of the (nested) report section.
    * @param runnable The runnable to run within this report section.
@@ -135,9 +132,7 @@ public class ProbeHelpers {
     onProbeResult(new ProbeResult(name(), message, ProbeResult.Status.STARTED, 0));
   }
 
-  /**
-   * Reports a starting probe, without any accompanying message.
-   */
+  /** Reports a starting probe, without any accompanying message. */
   public void start() {
     start(null);
   }
@@ -146,8 +141,8 @@ public class ProbeHelpers {
    * Retries a runnable with a simple backoff.
    *
    * @param name The name of the probe.
-   * @param maxRetries The maximum number of retries after which a fatal error will be
-   *                   reported (and a {@link FatalException} exception thrown).
+   * @param maxRetries The maximum number of retries after which a fatal error will be reported (and
+   *     a {@link FatalException} exception thrown).
    * @param backoff The simple backoff.
    * @param runnable The runnable to try.
    */
@@ -186,8 +181,8 @@ public class ProbeHelpers {
   }
 
   /**
-   * Ensures that the runnable does not throw, otherwise immediately
-   * reports a fatal error without attempting to retry the runnable.
+   * Ensures that the runnable does not throw, otherwise immediately reports a fatal error without
+   * attempting to retry the runnable.
    *
    * @param name The name of the corresponding probe.
    * @param runnable The runnable to try.
@@ -199,7 +194,7 @@ public class ProbeHelpers {
   /**
    * Wraps a future that is used to execute probes.
    *
-   * Allows the prober unwrapping of {@link FatalException} exceptions.
+   * <p>Allows the prober unwrapping of {@link FatalException} exceptions.
    */
   public static class ProbeFuture {
     private CompletableFuture<Void> future;
@@ -210,11 +205,10 @@ public class ProbeHelpers {
     }
 
     /**
-     * Waits if necessary for this future to complete, and then
-     * returns its result.
+     * Waits if necessary for this future to complete, and then returns its result.
      *
-     * {@link ExecutionException} exceptions are unwrapped for the
-     * {@link FatalException} exception.
+     * <p>{@link ExecutionException} exceptions are unwrapped for the {@link FatalException}
+     * exception.
      */
     public void get() {
       try {
@@ -241,8 +235,8 @@ public class ProbeHelpers {
   }
 
   /**
-   * Shuts down immediately, cancelling all the pending tasks, and ensuring
-   * that no other parallel task is scheduled.
+   * Shuts down immediately, cancelling all the pending tasks, and ensuring that no other parallel
+   * task is scheduled.
    */
   public void shutdownNow() {
     List<Runnable> pendingTasks = executor.shutdownNow();

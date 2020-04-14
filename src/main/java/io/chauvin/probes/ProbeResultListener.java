@@ -18,9 +18,6 @@ public interface ProbeResultListener {
   /** Returns the number of successful probes so far. */
   int successCount();
 
-  /**
-   * Returns the total number of probes that have been executed so far, excluding
-   * retries.
-   */
+  /** Returns the total number of probes that have been executed so far, excluding retries. */
   int probeCount();
 }
