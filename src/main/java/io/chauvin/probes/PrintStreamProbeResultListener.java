@@ -85,7 +85,7 @@ public class PrintStreamProbeResultListener extends CountingProbeResultListener 
   private String formatStatus(ProbeResult.Status status) {
     switch (status) {
       case STARTED:
-        return format("\uD83C\uDFC1", "STARTED", Ansi.Color.MAGENTA, Ansi.Color.DEFAULT);
+        return format("\uD83C\uDFC1", "STARTED", Ansi.Color.MAGENTA, Ansi.Color.WHITE);
       case OK:
         return format("✓", "OK", Ansi.Color.GREEN, Ansi.Color.DEFAULT);
       case RETRY:

@@ -94,7 +94,8 @@ public class ProbeHelpers {
 
   private synchronized void onProbeResult(ProbeResult result) {
     if (completedSections.contains(result.getName())) {
-      throw onFatal(String.format("<section '%s' is already completed>", result.getName()), 0);
+      throw new IllegalStateException(
+          String.format("<section '%s' is already completed>", result.getName()));
     }
     if (result.getStatus() != ProbeResult.Status.RETRY) {
       completedSections.add(result.getName());
